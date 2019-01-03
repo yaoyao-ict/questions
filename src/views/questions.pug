@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  ul
+    each val in questions
+      li
+        div= val.title
+        div= 'Asked by: ' + val.user.name
+        div= val.detail
+        div= val.tags
+    else
+      li There are no questions
