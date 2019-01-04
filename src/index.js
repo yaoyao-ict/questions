@@ -17,7 +17,7 @@ const logger = require('morgan');
 
 initDB();
 
-const port = 80;
+const port = 9999;
 const app = express();
 const compiler = webpack(config);
 

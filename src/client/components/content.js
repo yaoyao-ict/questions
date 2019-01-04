@@ -4,7 +4,6 @@ import ReactLoading from 'react-loading';
 import {
   Route,
   Switch,
-  withRouter,
 } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import { Sidebar } from './sidebar';
@@ -57,6 +56,6 @@ class Content extends React.PureComponent {
   }
 }
 
-const StyledContent = injectSheet(styles)(withRouter(Content));
+const StyledContent = injectSheet(styles)(Content);
 
 export default StyledContent;

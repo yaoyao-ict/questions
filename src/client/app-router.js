@@ -17,7 +17,7 @@ const AppRouter = () => (
         </Route>
       </Switch>
       <Header />
-      <Content />
+      <Route component={Content} />
     </div>
   </Router>
 );
