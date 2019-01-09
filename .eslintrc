@@ -19,8 +19,19 @@
     "browser": true,
     "node": true,
     "jquery": true,
-    "mocha": true
+    "jest": true
   },
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js"
+      ],
+      "env": {
+        "jest": true
+      },
+      "plugins": ["jest"]
+    }
+  ],
   "rules": {
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "import/prefer-default-export": 0,
