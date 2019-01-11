@@ -2,8 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Header } from './header';
 
-test('header render', () => {
-  const wrapper = shallow(<Header />);
+describe('header test', () => {
+  test('header should render', () => {
+    const wrapper = shallow(<Header />);
 
-  expect(wrapper.find('.navbar').length).toEqual(2);
+    expect(wrapper.find('.navbar').length).toEqual(1);
+  });
 });
