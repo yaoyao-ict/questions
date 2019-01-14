@@ -20,9 +20,6 @@ export default {
     filename: 'bundle.js',
     chunkFilename: '[name].bundle.js',
   },
-  devServer: {
-    contentBase: './dist',
-  },
   plugins: [
     new webpack.DefinePlugin(Globals),
     new MiniCssExtractPlugin({
@@ -61,6 +58,10 @@ export default {
       {
         test: /\.(woff|woff2)$/,
         use: 'url?prefix=font/&limit=5000',
+      },
+      {
+        test: /\.png$/,
+        loader: 'url-loader?mimetype=image/png',
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,

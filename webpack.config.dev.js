@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 module.exports = {
   mode: 'development',
@@ -36,14 +35,7 @@ module.exports = {
       {
         test: /(\.css)$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // you can specify a publicPath here
-              // by default it use publicPath in webpackOptions.output
-              publicPath: '../',
-            },
-          },
+          'style-loader',
           'css-loader',
         ],
       },
@@ -54,6 +46,10 @@ module.exports = {
       {
         test: /\.(woff|woff2)$/,
         use: 'url?prefix=font/&limit=5000',
+      },
+      {
+        test: /\.png$/,
+        loader: 'url-loader?mimetype=image/png',
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,

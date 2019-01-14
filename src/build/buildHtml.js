@@ -11,7 +11,7 @@ fs.readFile(path.join(__dirname, '../index.html'), 'utf8', (err, markup) => {
 
   const $ = cheerio.load(markup);
 
-  $('head').prepend('<link rel="preload" href="style.css" as="style" />');
+  $('head').prepend('<link rel="preload" href="style.css" as="style">');
   $('head').prepend('<link rel="stylesheet" href="style.css">');
 
   fs.writeFile(path.join(__dirname, '../../dist/index.html'), $.html(), 'utf8', (e) => {

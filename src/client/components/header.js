@@ -1,9 +1,10 @@
 import React from 'react';
+import img from '../../static-resources/img/brand.png';
 
 export const Header = () => (
   <nav className="navbar navbar-dark bg-dark bd-navbar">
     <a className="navbar-brand" href="/">
-      <img src="../../static-resources/img/brand.png" width="60" height="30" className="d-inline-block align-top" alt="" />
+      <img src={img} width="60" height="30" className="d-inline-block align-top" alt="" />
       Questions & Answers
     </a>
     <form className="form-inline">
