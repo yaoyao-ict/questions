@@ -1,10 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 import ReactLoading from 'react-loading';
-import {
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import injectSheet from 'react-jss';
 import { Sidebar } from './sidebar';
 import { Questions } from '../pages/questions';
