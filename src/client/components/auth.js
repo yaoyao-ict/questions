@@ -1,15 +1,18 @@
 /* eslint no-console: 0 no-alert: 0 */
 import auth0 from 'auth0-js';
 
+const clientId = 'Ydrxek0G1LysaYo4u77Zfq4Y2ADBJLfg';
+
 export default class Auth {
-  constructor() {
+  constructor(history) {
     this.auth0 = new auth0.WebAuth({
       domain: 'ask-question-dev.auth0.com',
-      clientID: 'Ydrxek0G1LysaYo4u77Zfq4Y2ADBJLfg',
+      clientID: clientId,
       redirectUri: 'http://localhost:9999/callback',
       responseType: 'token id_token',
       scope: 'openid',
     });
+    this.history = history;
   }
 
   login = () => {
@@ -17,16 +20,15 @@ export default class Auth {
   };
 
   handleAuthentication = () => {
-    const { history } = this.props;
-
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        history.replace('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
+
+      this.history.replace('/');
     });
   };
 
@@ -53,14 +55,15 @@ export default class Auth {
   };
 
   logout = () => {
-    const { history } = this.props;
     // Remove tokens and expiry time
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 
-    // navigate to the home route
-    history.push('/');
+    this.auth0.logout({
+      clientID: clientId,
+      returnTo: 'http://localhost:9999',
+    });
   };
 
   isAuthenticated = () => {

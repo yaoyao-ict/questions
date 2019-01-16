@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Switch, Route } from 'react-router-dom';
+import Callback from './callback';
 import Header from './header';
 import Content from './content';
 import Auth from './auth';
@@ -20,9 +21,19 @@ class App extends React.Component {
           </Route>
         </Switch>
         <Route
+          path="/callback"
+          render={props => (
+            <Callback
+              auth={this.auth}
+              {...props}
+            />
+          )}
+        />
+        <Route
           render={props => (
             <Header
               login={this.auth.login}
+              logout={this.auth.logout}
               isAuthenticated={this.auth.isAuthenticated}
               {...props}
             />

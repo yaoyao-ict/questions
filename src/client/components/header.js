@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import img from '../../static-resources/img/brand.png';
 
-function Header({ login, isAuthenticated }) {
+
+function Header({ login, logout, isAuthenticated }) {
   return (
     <nav className="navbar navbar-dark bg-dark bd-navbar">
       <a className="navbar-brand" href="/">
@@ -27,9 +28,16 @@ function Header({ login, isAuthenticated }) {
         </button>
       </form>
       {isAuthenticated() ? (
-        <button className="btn btn-outline-success my-2 my-sm-0" type="button">
-          Hello
-        </button>
+        <div>
+          <span className="btn-outline-success">Hello, User Unknown</span>
+          <button
+            className="btn btn-outline-success my-2 my-sm-0"
+            type="button"
+            onClick={logout}
+          >
+            Log out
+          </button>
+        </div>
       ) : (
         <form className="form-inline">
           <button
@@ -47,6 +55,7 @@ function Header({ login, isAuthenticated }) {
 
 Header.propTypes = {
   login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.func.isRequired,
 };
 
