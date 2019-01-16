@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import img from '../../static-resources/img/brand.png';
 
-
 function Header({ login, logout, isAuthenticated }) {
   return (
     <nav className="navbar navbar-dark bg-dark bd-navbar">
